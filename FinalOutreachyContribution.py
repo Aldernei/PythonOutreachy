@@ -54,8 +54,11 @@ def get_contributors(filename):
   r = requests.get(url)
   d = r.json()
   
+  pageid = [id for id in d['query']['pages']]
+  pageid = pageid[0]
+  pageid
 
-  contributors_item = d['query']['pages']['111331422']['contributors']
+  contributors_item = d['query']['pages'][pageid]['contributors']
 
   var = []
   for item in contributors_item:
@@ -68,8 +71,10 @@ def get_date_time(filename):
   r = requests.get(url)
   d = r.json()
 
-
-  dates_item = d['query']['pages']['111331422']['imageinfo']
+  pageid = [id for id in d['query']['pages']]
+  pageid = pageid[0]
+  pageid
+  dates_item = d['query']['pages'][pageid]['imageinfo']
 
   date = []
   for item in dates_item:
@@ -82,7 +87,10 @@ def get_categories(filename):
   r = requests.get(url)
   d = r.json()
 
-  categories_item = d['query']['pages']['111331422']['categories']
+  pageid = [id for id in d['query']['pages']]
+  pageid = pageid[0]
+  pageid
+  categories_item = d['query']['pages'][pageid]['categories']
 
   category = []
   for item in categories_item:
@@ -90,4 +98,4 @@ def get_categories(filename):
   return category
 
 #exemplo de requisição:
-print(get_contributors("File:Igreja da Ordem Terceira de São Francisco Salvador Casa dos Santos Cristo Crucificado 2021-8964.jpg"))
+print(get_date_time("File:Igreja da Ordem Terceira de São Francisco Salvador Casa dos Santos Cristo Crucificado 2021-8964.jpg"))
